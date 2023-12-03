@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-background: 0 0 100%;
+    --color-background-dark: 210 40% 98%;
+    --color-foreground: 222 47% 11%;
+
+    --color-primary: 173 80% 40%;
+    --color-border: 214 32% 91%;
+
+    --border-radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background-dark text-foreground;
+  }
+}

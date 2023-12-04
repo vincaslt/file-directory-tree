@@ -8,6 +8,7 @@ import {
   TextField,
   Input,
 } from "react-aria-components";
+import { Key } from "react-stately";
 import {
   PiCaretDownLight,
   PiCaretUpLight,
@@ -23,7 +24,8 @@ import { FolderAction, FolderActionType } from "./types";
 
 type Props = {
   name: string;
-  path: string[];
+  id: Key;
+  level: number;
   children: ReactNode;
   isExpanded: boolean;
   onAction: (action: FolderAction) => void;
@@ -32,14 +34,14 @@ type Props = {
 export function DirectoryTreeFolderRow({
   name,
   children,
-  path,
+  id,
+  level,
   isExpanded,
   onAction,
 }: Props) {
-  const level = path.length - 1;
   return (
     <>
-      <TableRow id={path.join("/")} className="group">
+      <TableRow id={id} className="group">
         <TableCell
           className="gap-1"
           style={{
@@ -49,7 +51,7 @@ export function DirectoryTreeFolderRow({
           {isExpanded ? <PiCaretDownLight /> : <PiCaretUpLight />}
           {isExpanded ? <PiFolderOpenLight /> : <PiFolderLight />}
           {name === "" ? (
-            <TextField>
+            <TextField aria-label="Folder name">
               <Input
                 autoFocus
                 placeholder="New Folder"

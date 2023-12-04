@@ -1,21 +1,5 @@
-import { DirectoryTreeNode, DirectoryTreeNodeWithPath } from "./types";
-
-export function generateDirectoryPaths(
-  tree: DirectoryTreeNode[],
-  parentPath: string[] = []
-): DirectoryTreeNodeWithPath[] {
-  return tree.map((node) => {
-    const path = [...parentPath, node.name];
-    return {
-      path,
-      node,
-      children:
-        node.kind == "directory"
-          ? generateDirectoryPaths(node.children, path)
-          : [],
-    };
-  });
-}
+import { Key, TreeData } from "react-stately";
+import { DirectoryTreeNode } from "./types";
 
 export function mapTree<T, R>(
   getChildren: (node: T) => T[],
@@ -27,4 +11,14 @@ export function mapTree<T, R>(
     results.push(...mapTree(getChildren, mapper, getChildren(node)));
     return results;
   }, []);
+}
+
+export function getPathTo(
+  key: Key,
+  tree: TreeData<DirectoryTreeNode>
+): string[] {
+  const treeItem = tree.getItem(key);
+  return treeItem.parentKey
+    ? [...getPathTo(treeItem.parentKey, tree), treeItem.value.name]
+    : [];
 }

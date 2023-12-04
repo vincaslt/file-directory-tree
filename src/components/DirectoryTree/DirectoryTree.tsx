@@ -8,6 +8,8 @@ import { generateDirectoryPaths, mapTree } from "./helpers";
 import {
   DirectoryTreeNode as DirectoryTreeNodeType,
   DirectoryTreeNodeWithPath,
+  FolderAction,
+  FolderActionType,
 } from "./types";
 
 // TODO: create controlled component
@@ -100,6 +102,43 @@ export function DirectoryTree({ root, onSelect }: Props) {
     }
   };
 
+  const handleFolderAction = (action: FolderAction, path: Key) => {
+    const treeItem = tree.getItem(path);
+
+    if (action.type === FolderActionType.NewFolder) {
+      const [newFolder] = generateDirectoryPaths(
+        [
+          {
+            name: "",
+            kind: "directory",
+            children: [],
+          },
+        ],
+        treeItem.value.path
+      );
+      tree.append(path, newFolder);
+      toggleExpandedNodeByPath(newFolder.path.join("/"));
+    } else if (action.type === FolderActionType.AssignName) {
+      if (action.data.name !== "") {
+        const parent = tree.getItem(treeItem.parentKey);
+        const [newFolder] = generateDirectoryPaths(
+          [
+            {
+              name: action.data.name,
+              kind: "directory",
+              children: [],
+            },
+          ],
+          parent.value.path
+        );
+        tree.append(parent.key, newFolder);
+        tree.remove(path);
+      } else {
+        tree.remove(path);
+      }
+    }
+  };
+
   // TODO: render empty state to be able to add new folders/files?
   return (
     <Table
@@ -132,6 +171,7 @@ export function DirectoryTree({ root, onSelect }: Props) {
             key={treeNode.key}
             treeNode={treeNode}
             expandedPaths={expandedPaths}
+            onAction={handleFolderAction}
           />
         ))}
       </TableBody>

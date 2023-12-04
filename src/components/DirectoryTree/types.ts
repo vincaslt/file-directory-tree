@@ -18,3 +18,14 @@ export type DirectoryTreeNodeWithPath = {
   node: DirectoryTreeNode;
   children: DirectoryTreeNodeWithPath[];
 };
+
+export enum FolderActionType {
+  NewFolder = "new-folder",
+  NewFile = "new-file",
+  AssignName = "assign-name",
+}
+
+export type FolderAction =
+  | { type: FolderActionType.NewFolder }
+  | { type: FolderActionType.NewFile }
+  | { type: FolderActionType.AssignName; data: { name: string } };

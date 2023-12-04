@@ -15,7 +15,10 @@ export function TableHeaderColumn({
   return (
     <Column
       {...rest}
-      className={cn("text-left border-l first:border-l-0", columnClassName)}
+      className={cn(
+        "focus:outline-none text-left border-l first:border-l-0",
+        columnClassName
+      )}
       isRowHeader
     >
       {(...renderProps) => (

@@ -1,7 +1,6 @@
+import { PiFileLight } from "react-icons/pi";
 import { TableCell } from "./TableCell";
-import { PiDotsThreeVerticalLight, PiFileLight } from "react-icons/pi";
 import { TableRow } from "./TableRow";
-import { Button } from "react-aria-components";
 
 type Props = {
   name: string;
@@ -30,11 +29,7 @@ export function DirectoryTreeFileRow({
       </TableCell>
       <TableCell className="text-foreground/50">{modifiedDate}</TableCell>
       <TableCell className="text-foreground/50">{size}</TableCell>
-      <TableCell cellClassName="border-l-0" className="justify-end">
-        <Button className="hidden group-hover:block -my-1 -mr-1 p-1 hover:bg-secondary/10 focus:outline-none focus:ring-1 focus:ring-secondary/50">
-          <PiDotsThreeVerticalLight />
-        </Button>
-      </TableCell>
+      <TableCell cellClassName="border-l-0" className="justify-end"></TableCell>
     </TableRow>
   );
 }

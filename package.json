@@ -16,9 +16,11 @@
     "react-aria": "^3.30.0",
     "react-aria-components": "1.0.0-rc.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.12.0",
     "react-stately": "^3.28.0",
     "tailwind-merge": "^2.1.0",
-    "tailwindcss-react-aria-components": "1.0.0-rc.0"
+    "tailwindcss-react-aria-components": "1.0.0-rc.0",
+    "zustand": "^4.4.7"
   },
   "devDependencies": {
     "@types/node": "^20.10.2",

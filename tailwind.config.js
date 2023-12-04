@@ -1,3 +1,5 @@
+import ariaComponentsPlugin from "tailwindcss-react-aria-components";
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
@@ -11,13 +13,11 @@ export default {
         primary: {
           DEFAULT: "hsl(var(--color-primary) / <alpha-value>)",
         },
-      },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        secondary: {
+          DEFAULT: "hsl(var(--color-secondary) / <alpha-value>)",
+        },
       },
     },
   },
-  plugins: [import("tailwindcss-react-aria-components")],
+  plugins: [ariaComponentsPlugin],
 };

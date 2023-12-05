@@ -1,14 +1,14 @@
 Task: https://allinbits.notion.site/Sr-Front-end-Engineer-Take-Home-Task-5d77d88478d34456bd7a99512616aa45
 
-It took me around 9 hours of working time to do the task. It includes all the base features and the bonus features - creating files/folders and moving them using drag-drop.
+It took me around 9 hours of working time to do the task. It includes all the base features and the bonus features - creating files/folders and moving them using drag-drop. I found the task very interesting so I wanted to do the file creation and moving files/folders. The base features took me 5-6 hours, by hour 8 I was done with file/folder creation, then spent some extra time to finish it up.
 
 ## Instructions
 
-Clone the repo locally
+Clone the repo locally.
 
 ```
 npm i -g pnpm
-pnpm run i
+pnpm i
 pnpm run dev
 ```
 

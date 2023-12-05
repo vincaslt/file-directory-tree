@@ -20,8 +20,7 @@
     "react-icons": "^4.12.0",
     "react-stately": "^3.28.0",
     "tailwind-merge": "^2.1.0",
-    "tailwindcss-react-aria-components": "1.0.0-rc.0",
-    "zustand": "^4.4.7"
+    "tailwindcss-react-aria-components": "1.0.0-rc.0"
   },
   "devDependencies": {
     "@types/node": "^20.10.2",
